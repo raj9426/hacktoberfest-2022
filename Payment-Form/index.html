@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylepayment.css">
+    <title>Payment Form</title>
+</head>
+
+<!-- background="back 2.jpg" -->
+<body  >
+    <form name="form1" onsubmit="return validate()" action="">
+        <div class="all">
+            <div class="heading">
+                <h1>&#10071;Payment Form&#10071;</h1>
+            </div>
+
+            <div class="contact-info">
+                <fieldset>
+                    <h2>Contact Information &#128222;</h2>
+                    <i><h5>Required fields *</h5></i>
+                    <p>Name: * <input type="text" name="name" id="name" maxlength="15"
+                            pattern="(^[A-Za-z]+\s[A-Za-z]+$)" required></p>
+
+                   <!--<p>Contact Number: * <input type="text" value="+91" name="contact" maxlength="10"
+                            pattern="^([7-9][0-9]{9})" required> </p> --> 
+                    
+                    <p>Contact Number: *<input id="dummynum" type="text" placeholder="Ex 8623056767"></p>
+                    
+                    <input name="contact" id="realnum" type="hidden" value="+91" maxlength="10"
+                            pattern="^([7-9][0-9]{9})">
+
+                   <!-- <p>Customer ID: * <input type="text" value="CUSTID"  name="customerid" maxlength="8"
+                            pattern="[a-zA-Z0-9]+"></p> -->
+
+                   <p>Customer ID: *<input id="dummyid" type="text" placeholder="Enter your id"></p> 
+                   
+                    <input name="customerid" id="customerid" type="hidden" value="CUSTID" maxlength="8"
+                            pattern="[a-zA-Z0-9]+">
+
+
+                    <p>Age: <input type="number" min="15" max="120"></p>
+
+                    <p>
+                        Gender: <br>
+                        Male <input type="radio" name="gender" id="male">
+                        Female <input type="radio" name="gender" id="female">
+                        Other <input type="radio" name="gender" id="Other">
+                    </p>
+
+                    <p> Address: * <textarea name="address" id="address" cols="50" rows="8" required></textarea></p>
+
+                    <p> Nationality: <br>
+                        Indian <input type="radio" name="nationality" id ="Indian">
+                        Other <input type="radio" name="nationality" id = "Other">
+                        <br>
+                    </p>
+
+                    <p>
+                        Upload id-proof: * &nbsp;<input type="file" name="file" size="8 charaters" maxlength="300kb"
+                            required>
+                    </p>
+                    <p>Email: <input type="email" name="email" id="email"
+                            pattern="(^([A-za-z0-9\.-]+)@([A-za-z0-9-]+).([a-z]{2,3})$)"></p>
+                    <p>Pincode: <input type="number" name="pincode" id="pincode"></p>
+                </fieldset>
+            </div>
+
+            <div class="payment-info">
+                <fieldset>
+                    <h2>Payment Information &#128179;</h2>
+                    <p>Card Type:
+                        <select name="card_type" id="card_type">
+                            <option value="">--Select a Card Type--</option>
+                            <option value="visa">Visa</option>
+                            <option value="rupay">Rupay</option>
+                            <option value="mastercard">Matercard</option>
+                        </select>
+                    </p>
+                    <p>
+                        Card Number <input type="number" name="card_number" id="card_number">
+                    </p>
+                    <p>
+                        Expiration Date: <input type="date" name="exp_date" id="exp_date" min="2015-01-01"
+                            max="2026-01-01">
+                    </p>
+                    <p>CVV <input type="password" name="cvv" id="cvv"></p>
+                </fieldset>
+
+
+                <br>
+                <div class="confirm">
+                    <input type="submit" name="confirm" value="Confirm">
+                    <input type="submit" value="Pay now">
+                </div>
+                
+            </div>
+    </form>
+    </div>
+
+    <script>
+
+        document.getElementById('dummyid').onchange=function(){
+            var user_input = document.getElementById('dummyid').value();
+            document.getElementById('customerid').value = user_input;
+        }
+
+        document.getElementById('dummynum').onchange=function(){
+            var user_input = document.getElementById('dummynum').value();
+            document.getElementById('realnum').value = user_input;
+        }
+
+        function validate() {
+            var n = document.getElementById("name");
+            if (n.value == "") {
+                alert("Name not entered");
+                n.style.border = "2px solid red";
+                return false;
+            }
+            else {
+                if (patt_name.test(n.value)) {
+                    alert("Data submitted");
+                    return true;
+                }
+                else {
+                    alert("Not in format");
+                    n.style.border = "2px solid red";
+                    return false;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
